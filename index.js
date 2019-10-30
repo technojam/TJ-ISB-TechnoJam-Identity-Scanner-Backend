@@ -6,7 +6,10 @@ const mongoose = require('mongoose');
 const app = express();
 
 //connect to mongodb
-mongoose.connect('mongodb://localhost/members');
+mongoose.connect(`mongodb+srv://rahul:rahulis1@cluster0-i3ihc.gcp.mongodb.net/test?retryWrites=true&w=majority`)
+mongoose.connection.once('open', () => {
+    console.log("connected to db")
+})
 mongoose.Promise = global.Promise
 
 //initialize body parser
