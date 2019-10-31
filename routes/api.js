@@ -5,7 +5,7 @@ const router = express.Router();
 
 //Verify authentication
 router.get("/scanner", async(req, res, next) => {
-    const data = Member.find({});
+    const data = await Member.find({});
     res.json(data);
 });
 
