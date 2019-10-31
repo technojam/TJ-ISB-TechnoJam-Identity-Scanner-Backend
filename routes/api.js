@@ -4,8 +4,9 @@ const router = express.Router();
 
 
 //Verify authentication
-router.get("/scanner", function(req, res, next) {
-    res.send({ type: 'GET' });
+router.get("/scanner", async(req, res, next) => {
+    const data = Member.find({});
+    res.json(data);
 });
 
 router.post("/scanner", function(req, res, next) {
