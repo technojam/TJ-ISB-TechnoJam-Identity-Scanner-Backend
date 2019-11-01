@@ -30,6 +30,9 @@ const memeberSchema = new Schema({
     },
     imageUrl: {
         type: String
+    },
+    authentication: {
+        type: String
     }
 
 

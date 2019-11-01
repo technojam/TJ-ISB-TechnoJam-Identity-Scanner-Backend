@@ -17,7 +17,7 @@ router.get("/scanner/:key", async(req, res, next) => {
     Member.findOne({ key: req.params.key }).then(function(member) {
         if (member) {
             if (member.hash == sha(req.params.key)) {
-                member["authentication"] = "successful"
+                member["authentication"] = "successful";
                 res.send(member)
             } else {
                 member["authentication"] = "unsuccessful"
