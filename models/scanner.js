@@ -8,6 +8,14 @@ const memeberSchema = new Schema({
         type: String,
         required: [true, "Name Field is Required"]
     },
+    key: {
+        type: String,
+        required: [true, "Key is required"]
+    },
+    hash: {
+        type: String,
+        required: [true, "Hash code of key is required"]
+    },
     linkedin: {
         type: String
     },
@@ -16,7 +24,23 @@ const memeberSchema = new Schema({
     },
     github: {
         type: String
+    },
+    skills: {
+        type: Array
+    },
+    imageUrl: {
+        type: String
+    },
+    authentication: {
+        type: String
+    },
+    about: {
+        type: String
+    },
+    hobbies: {
+        type: String
     }
+
 
 })
 const Member = mongoose.model('member', memeberSchema);
