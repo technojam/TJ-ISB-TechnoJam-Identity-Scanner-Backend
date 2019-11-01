@@ -24,7 +24,14 @@ const memeberSchema = new Schema({
     },
     github: {
         type: String
+    },
+    skills: {
+        type: Array
+    },
+    imageUrl: {
+        type: String
     }
+
 
 })
 const Member = mongoose.model('member', memeberSchema);

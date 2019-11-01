@@ -4,6 +4,12 @@ const router = express.Router();
 const sha = require('sha256');
 
 
+//Temp method to see content of database
+router.get("/scanner", async(req, res, next) => {
+    const data = await Member.find({});
+    res.json(data);
+});
+
 //Verify authentication
 router.get("/scanner/:key", async(req, res, next) => {
     const data = await Member.find({});
@@ -11,12 +17,15 @@ router.get("/scanner/:key", async(req, res, next) => {
     Member.findOne({ key: req.params.key }).then(function(member) {
         if (member) {
             if (member.hash == sha(req.params.key)) {
+                member["authentication"] = "successful"
                 res.send(member)
             } else {
-                res.send("Authentication unsuccessful")
+                member["authentication"] = "unsuccessful"
+                res.send(member)
             }
         } else {
-            res.send("Member not found in Database")
+            member["authentication"] = "unsuccessful"
+            res.send(member)
         }
     }).catch(function(err) {
         res.send(err)
@@ -24,8 +33,12 @@ router.get("/scanner/:key", async(req, res, next) => {
 });
 
 router.post("/scanner", function(req, res, next) {
-    Member.create(req.body).then(function(member) {
-        res.send(member);
+    let key = req.body.key;
+    let hash = sha(key);
+    let obj = req.body;
+    obj["hash"] = hash;
+    Member.create(obj).then(function(member) {
+        res.send(obj);
     }).catch(next);
 });
 
