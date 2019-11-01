@@ -24,8 +24,7 @@ router.get("/scanner/:key", async(req, res, next) => {
                 res.send(member)
             }
         } else {
-            member["authentication"] = "unsuccessful"
-            res.send(member)
+            res.send({ "authentication": "unsuccessful" })
         }
     }).catch(function(err) {
         res.send(err)
