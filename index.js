@@ -1,9 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
-//setup express app
+const cors = require('cors')
+    //setup express app
 const app = express();
+app.use(cors())
 
 //connect to mongodb
 mongoose.connect(`mongodb+srv://rahul:rahulis1@cluster0-i3ihc.gcp.mongodb.net/test?retryWrites=true&w=majority`)
