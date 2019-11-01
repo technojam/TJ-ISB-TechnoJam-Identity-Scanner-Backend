@@ -33,6 +33,12 @@ const memeberSchema = new Schema({
     },
     authentication: {
         type: String
+    },
+    about: {
+        type: String
+    },
+    hobbies: {
+        type: String
     }
 
 
