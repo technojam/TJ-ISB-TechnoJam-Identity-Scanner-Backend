@@ -8,6 +8,14 @@ const memeberSchema = new Schema({
         type: String,
         required: [true, "Name Field is Required"]
     },
+    key: {
+        type: String,
+        required: [true, "Key is required"]
+    },
+    hash: {
+        type: String,
+        required: [true, "Hash code of key is required"]
+    },
     linkedin: {
         type: String
     },
